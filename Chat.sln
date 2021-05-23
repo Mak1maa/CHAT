@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat", "Chat\Chat.csproj", "{7A5BB939-4696-4C0D-97F4-29C5F963910B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatHost", "ChatHost\ChatHost.csproj", "{8E8F8504-8F87-41E2-B07E-A7C86A1B5E08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatClient", "ChatClient\ChatClient.csproj", "{5930C7F8-702D-48CA-BAC7-7A4699A4328D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A5BB939-4696-4C0D-97F4-29C5F963910B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A5BB939-4696-4C0D-97F4-29C5F963910B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A5BB939-4696-4C0D-97F4-29C5F963910B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A5BB939-4696-4C0D-97F4-29C5F963910B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E8F8504-8F87-41E2-B07E-A7C86A1B5E08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E8F8504-8F87-41E2-B07E-A7C86A1B5E08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E8F8504-8F87-41E2-B07E-A7C86A1B5E08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E8F8504-8F87-41E2-B07E-A7C86A1B5E08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5930C7F8-702D-48CA-BAC7-7A4699A4328D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5930C7F8-702D-48CA-BAC7-7A4699A4328D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5930C7F8-702D-48CA-BAC7-7A4699A4328D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5930C7F8-702D-48CA-BAC7-7A4699A4328D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {227BC787-0B09-4BA9-8EB4-6F6657E03C86}
+	EndGlobalSection
+EndGlobal
