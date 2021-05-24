@@ -3,16 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 
+/**
+ * Реализвация интерфейса IServiceChat
+**/
+
 namespace Chat
 {
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class ServiceChat : IServiceChat
     {
+        // Лист пользователей
         List<ServerUser> users = new List<ServerUser>();
-        int nextId = 1;
+        int nextId = 1; // Генерация id-шников
 
         public int Connect(string name)
         {
+            // Создание пользователя
             ServerUser user = new ServerUser()
             {
                 ID = nextId,
@@ -42,6 +48,7 @@ namespace Chat
         {
             foreach(var item in users)
             {
+                // Ответ от сервера всем пользователям
                 string answer = DateTime.Now.ToShortTimeString();
 
                 var user = users.FirstOrDefault(i => i.ID == id);
@@ -52,6 +59,7 @@ namespace Chat
 
                 answer += msg;
 
+                // Отправка сообщения текущему пользователю, с которым мы работаем в цикле foreach
                 item.operationContext.GetCallbackChannel<IServiceChatCallBack>().MsgCallBack(answer);
             }
         }

@@ -1,28 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using ChatClient.ServiceChat;
 
 namespace ChatClient
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window, ChatClient.ServiceChat.IServiceChatCallback
+    public partial class MainWindow : Window, IServiceChatCallback
     {
+        // Подключён ли на данный момент клиент к серверу
         bool isConnected = false;
-        ServiceChatClient client;
+        ServiceChatClient client; // Объект нашего хоста, чтобы взаимодействовать с его методами
         int ID;
 
         public MainWindow()
@@ -30,19 +16,15 @@ namespace ChatClient
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
         void ConnectUser()
         {
             if (!isConnected)
             {
+                // Создание и выделение памяти под наш объект ServiceChatClient
                 client = new ServiceChatClient(new System.ServiceModel.InstanceContext(this));
                 ID = client.Connect(tbUserName.Text);
-                tbUserName.IsEnabled = false;
-                bConDiscon.Content = "Disconnect";
+                tbUserName.IsEnabled = false; // Блокировка возможности изменить имя пользователя
+                bConDiscon.Content = "Отсоединиться";
                 isConnected = true;
             }
         }
@@ -53,33 +35,34 @@ namespace ChatClient
             {
                 client.Disconnect(ID);
                 client = null;
-                tbUserName.IsEnabled = true;
-                bConDiscon.Content = "Connect";
+                tbUserName.IsEnabled = true; // Возможности изменить имя пользователя
+                bConDiscon.Content = "Присоединиться";
                 isConnected = false;
             }
         }
 
+        // Обработка событий при нажатии на кнопку
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (isConnected)
             {
-                DisconnectUser();
+                DisconnectUser(); // Отсоединение пользователя, если подключён
             }
             else
             {
-                ConnectUser();
+                ConnectUser(); // Присоединение пользователя, если не подключён
             }
         }
 
         public void MsgCallBack(string msg)
         {
-            lbChat.Items.Add(msg);
-            lbChat.ScrollIntoView(lbChat.Items[lbChat.Items.Count - 1]);
+            lbChat.Items.Add(msg); // Добавление сообщения в listbox
+            lbChat.ScrollIntoView(lbChat.Items[lbChat.Items.Count - 1]); // Скролл к последнему сообщению
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            DisconnectUser();
+            DisconnectUser(); // Отсоединение пользователя при закрытии приложения 
         }
 
         private void tbMessage_KeyDown(object sender, KeyEventArgs e)

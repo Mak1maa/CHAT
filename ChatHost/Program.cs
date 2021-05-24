@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ServiceModel;
+
+// Задача простая, запуститься и висеть в процессах, обрабатывая логику сервиса
 
 namespace ChatHost
 {
@@ -14,7 +12,7 @@ namespace ChatHost
             using (var host = new ServiceHost(typeof(Chat.ServiceChat)))
             {
                 host.Open();
-                Console.WriteLine("Хост запущен!");
+                Console.WriteLine("Хост запущен...");
                 Console.ReadLine();
             }
         }
